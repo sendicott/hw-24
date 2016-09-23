@@ -23,8 +23,11 @@ app.factory("NewsService", function ($http) {
         star: function (id) {
             for (let i = 0; i < newsArray.length; i++) {
                 if (id === newsArray[i].id) {
-                    console.log(newsArray[i].title);
+                    // console.log(newsArray[i].title);
                     newsArray[i].starred = true;
+                    // newsArray[i].starred ? true : false
+                } else {
+                    newsArray[i].starred = false;
                 }
             }
         }
@@ -36,11 +39,5 @@ app.controller("NewsController", function ($scope, NewsService) {
     $scope.news = NewsService.getNews();
     $scope.StarTheArticle = function (idNumber) {
         NewsService.star(idNumber);
-        if ($scope.class === "hidden") {
-            $scope.class = "unhidden";
-        } else {
-            $scope.class = "hidden";
-        }
-        
     }
 });
