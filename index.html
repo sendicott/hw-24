@@ -3,7 +3,7 @@
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
     <script src="app.js"></script>
-    <!--<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">-->
+    <link rel="stylesheet" href="font-awesome-4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,8 +11,9 @@
     <h1>The News</h1>
     <ol>
         <li class="article" ng-repeat="element in news">{{ element.title }}
-            <button ng-click="StarTheArticle(element.title)">Read Later</button>
-            <!--<i class="fa fa-star" aria-hidden="true"></i>-->
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <button ng-click="StarTheArticle(element.id)">Read Later</button>
+            <p>{{ element.starred }}</p>
         </li>
     </ol>
 </body>

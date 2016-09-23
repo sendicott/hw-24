@@ -7,40 +7,34 @@ app.factory("NewsService", function ($http) {
         method: 'GET',
         url: "http://puzzlegram.herokuapp.com/news",
     }).then(function (news) {
-        // console.log(news);
         angular.copy(news.data.news, newsArray);
+
+        for (let i = 0; i < newsArray.length; i++) {
+            newsArray[i].starred = false;
+        }
     });
-
-    for (let i = 0; i < newsArray.length; i++) {
-        newsArray[i].starred = false;
-        console.log(newsArray);
-    }
-
-    // newsArray.forEach( function (arrayItem) {
-    //     arrayItem.starred = false;
-    // });
 
     return {
         getNews: function () {
+            console.log(newsArray);
             return newsArray;
         },
 
-        // star: function (selectedArticle) {
-        //     for (let i = 0; i < newsArray.length; i++) {
-        //         if (selectedArticle === newsArray[i]) {
-
-        //         }
-        //     }
-        // }
+        star: function (id) {
+            for (let i = 0; i < newsArray.length; i++) {
+                if (id === newsArray[i].id) {
+                    console.log(newsArray[i].title);
+                    newsArray[i].starred = true;
+                }
+            }
+        }
 
     }
 });
 
 app.controller("NewsController", function ($scope, NewsService) {
     $scope.news = NewsService.getNews();
-    console.log(NewsService.getNews());
-    $scope.StarTheArticle = function (selectedArticle) {
-        // let starred = angular.element(document.querySelector(''))
-        // NewsService.star(selectedArticle);
+    $scope.StarTheArticle = function (idNumber) {
+        NewsService.star(idNumber);
     }
 });
