@@ -11,7 +11,7 @@
     <h1>The News</h1>
     <ol>
         <li class="article" ng-repeat="element in news">{{ element.title }}
-            <i class="fa fa-star" aria-hidden="true"></i>
+            <i ng-class="hidden" class="fa fa-star" aria-hidden="true">Wishbone</i>
             <button ng-click="StarTheArticle(element.id)">Read Later</button>
             <p>{{ element.starred }}</p>
         </li>

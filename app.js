@@ -36,5 +36,11 @@ app.controller("NewsController", function ($scope, NewsService) {
     $scope.news = NewsService.getNews();
     $scope.StarTheArticle = function (idNumber) {
         NewsService.star(idNumber);
+        if ($scope.class === "hidden") {
+            $scope.class = "unhidden";
+        } else {
+            $scope.class = "hidden";
+        }
+        
     }
 });
